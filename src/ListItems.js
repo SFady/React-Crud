@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 class ListItems extends Component {
 
@@ -51,6 +52,11 @@ class ListItems extends Component {
                         </li>
                     ))}
                 </ul>
+                <Link
+                    to='/add'
+                    className='add-item'>
+                    Add Item
+                </Link>
             </div>    
         )
 

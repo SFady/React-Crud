@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import ListItems from './ListItems';
+import { Route } from 'react-router-dom'
+import AddItem from './AddItem';
 
 class App extends Component {
   
@@ -32,13 +34,30 @@ class App extends Component {
     }))
   }
 
+  addItem = (item) => {
+    this.setState((currentState) => ({
+      items: currentState.items.concat([item])
+    }))
+  }
+
   render() {
     return (
       <div>
-        <ListItems
-          items={this.state.items}
-          onDeleteItem={this.deleteItem}
+        <Route exact path='/' render={() => (
+          <ListItems
+            items={this.state.items}
+            onDeleteItem={this.deleteItem}
+          />
+        )}/>
+        <Route path='/add' render={({ history }) => (
+          <AddItem
+            onAddItem={(item) => {
+            this.addItem(item)
+            history.push('/')
+          }}
         />
+        )}/>
+
       </div>
     )
   }
