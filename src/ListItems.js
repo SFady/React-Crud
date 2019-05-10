@@ -21,7 +21,7 @@ class ListItems extends Component {
                     &nbsp;
                     <button
                         onClick={() => onDeleteItem(item)}
-                        className='contact-remove'>
+                        className='item-delete'>
                         Delete
                     </button>
                 </li>
